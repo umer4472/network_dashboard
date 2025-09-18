@@ -160,7 +160,7 @@ def plot_all_together(df):
             ticktext.append("")
 
     fig.update_layout(
-        height=900,
+        height=800,
         width=1700,
         showlegend=True,
         barmode='stack',
