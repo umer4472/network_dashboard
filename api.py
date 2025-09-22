@@ -4,6 +4,7 @@ import pandas as pd
 import mysql.connector
 import os
 from dotenv import load_dotenv
+from crypto_utils import decrypt_value
 
 load_dotenv()
 
@@ -21,9 +22,9 @@ app.add_middleware(
 def fetch_data():
     # --- Connect to DB ---
     conn = mysql.connector.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
+        host=decrypt_value(os.getenv("DB_HOST")),
+        user=decrypt_value(os.getenv("DB_USER")),
+        password=decrypt_value(os.getenv("DB_PASSWORD")),
         port=int(os.getenv("DB_PORT", 3306))
     )
 
