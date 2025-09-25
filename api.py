@@ -80,7 +80,7 @@ def fetch_data():
         ca.`Cell Availability Rate %`,
         ca.Site_Unavail_TotalHours,
         ca.Cell_Unavail_TotalHours,
-        ca.SiteCount_withDwnTime as siteCount,
+        IFNULL(ca.SiteCount_withDwnTime_98_3, 0) AS siteCount,
         IFNULL(cs.ComplaintCount, 0) AS ComplaintCount
     FROM nas.CellAvail_City ca
     LEFT JOIN Complaint_Summary cs
