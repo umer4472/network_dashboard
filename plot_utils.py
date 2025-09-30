@@ -34,7 +34,7 @@ def plot_all_together(df):
         "2G": "#00B5E2",  # Accent Light Blue
         "3G": "#FF6F61",  # Coral
         "4G": "#0066CC",  # Mobily Blue
-        "5G": "#0066CC"   # Mobily Blue
+        "5G": "#33CC33"   # Lighter Sky Blue
     }
 
     fig = make_subplots(
@@ -52,6 +52,8 @@ def plot_all_together(df):
                 x=df_tech["YEARWEEK"],
                 y=df_tech["Cell Availability Rate %"],
                 mode='lines+markers',
+                line=dict(color=mobily_colors.get(tech, "#888888")),
+                marker=dict(color=mobily_colors.get(tech, "#888888")),
                 customdata=df_tech[["Technology"]].values,
                 hovertemplate=(
                     "<b>Technology:</b> %{customdata[0]}<br>"
@@ -61,6 +63,7 @@ def plot_all_together(df):
             ),
             row=1, col=1
         )
+
 
     # -------------------
     # Utility: Dynamic colors
